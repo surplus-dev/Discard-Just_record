@@ -12,7 +12,7 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
     height: 20px;
-    background: gold;
+    background: #ffb6b2;
     border-bottom: 1px solid #aaa;
 }
 
@@ -38,6 +38,10 @@ td {
 
 .give_margin {
     margin-left: 10px;
+}
+
+#tool {
+    margin-bottom: 15px;
 }
 
 @media (min-width: 1200px) {

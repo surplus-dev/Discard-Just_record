@@ -3,14 +3,30 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL & ~E_NOTICE);
 
-    function load_render($title, $data) {
+    function load_render($title, $data, $menu = []) {
+        $i = 0;
+        $menu_data = "";
+        while(1) {
+            if($menu[$i]) {
+                if($i !== 0) {
+                    $menu_data = $menu_data." | ";
+                }
+
+                $menu_data = $menu_data."<a href=\"".$menu[$i][1]."\">".$menu[$i][0]."</a>";
+                
+                $i += 1;
+            } else {
+                break;
+            }
+        }
+
         $skin_data = "
             <!DOCTYPE html>
             <html>
                 <head>    
                     <meta charset=\"utf-8\">
                     <title>".$title."</title>
-                    <link rel=\"stylesheet\" href=\"".file_fix("/view/scarlet/css/main.css?ver=1")."\">
+                    <link rel=\"stylesheet\" href=\"".file_fix("/view/scarlet/css/main.css?ver=2")."\">
                     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
                 </head>
                 <body>
@@ -20,6 +36,7 @@
                     </header>
                     <section>
                         <div id=\"title\"><h1>".$title."</h1></div>
+                        <div id=\"tool\">".$menu_data."</div>
                         <div id=\"data\">
                             ".$data."
                         </div>
